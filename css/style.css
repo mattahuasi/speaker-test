@@ -1,0 +1,359 @@
+/* ── Tokens ── */
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --border2: #cccccc;
+  --text: #1d1d1f;
+  --text2: #888888;
+  --text3: #666666;
+  --muted-bg: #f0f0f0;
+  --hover-bg: #fafafa;
+  --accent: #4f9ef8;
+  --accent-bg: #edf5ff;
+  --accent-txt: #185fa5;
+  --accent-bd: #85b7eb;
+  --badge-bg: #d0e9ff;
+  --radius: 20px;
+  --trans: 0.18s;
+}
+[data-theme="dark"] {
+  --bg: #0f0f11;
+  --surface: #1c1c1e;
+  --border: #2c2c2e;
+  --border2: #3a3a3c;
+  --text: #f5f5f7;
+  --text2: #8e8e93;
+  --text3: #a0a0a5;
+  --muted-bg: #2c2c2e;
+  --hover-bg: #28282a;
+  --accent: #4f9ef8;
+  --accent-bg: #0d2340;
+  --accent-txt: #90c4ff;
+  --accent-bd: #2a5a9a;
+  --badge-bg: #0d2340;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  transition:
+    background var(--trans),
+    color var(--trans);
+}
+
+/* ── Header ── */
+header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+  gap: 1rem;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+header h1 {
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--muted-bg);
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 17px;
+  flex-shrink: 0;
+  transition:
+    background var(--trans),
+    border-color var(--trans),
+    transform 0.12s;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--border2);
+}
+.theme-btn:active {
+  transform: scale(0.92);
+}
+
+/* ── Main ── */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  min-height: 0;
+}
+
+/* ── Speaker row ── */
+.speakers-row {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+}
+
+.spk-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  background: var(--surface);
+  transition:
+    border-color var(--trans),
+    transform 0.13s,
+    background var(--trans);
+  position: relative;
+  flex: 1;
+  min-width: 130px;
+  max-width: 200px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.spk-btn:hover {
+  border-color: var(--border2);
+  background: var(--hover-bg);
+}
+.spk-btn:active {
+  transform: scale(0.95);
+}
+.spk-btn.playing {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.spk-icon {
+  font-size: 64px;
+  line-height: 1;
+  user-select: none;
+}
+.spk-channel {
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+.spk-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.spk-badge {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: var(--muted-bg);
+  color: var(--text3);
+  border: 1px solid var(--border);
+}
+.spk-btn.playing .spk-badge {
+  background: var(--badge-bg);
+  color: var(--accent-txt);
+  border-color: var(--accent-bd);
+}
+
+.divider {
+  width: 1px;
+  height: 100px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Both button ── */
+.both-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8rem 2rem;
+  border-radius: 99px;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--trans);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.both-btn:hover {
+  background: var(--hover-bg);
+}
+.both-btn:active {
+  transform: scale(0.96);
+}
+.both-btn.playing {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent-txt);
+}
+
+/* ── Status ── */
+.status-bar {
+  font-size: 13px;
+  color: var(--text2);
+  text-align: center;
+  min-height: 20px;
+  padding: 0 1rem;
+  transition: color var(--trans);
+}
+
+/* ── Auto-test button ── */
+.all-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0.6rem 1.4rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--muted-bg);
+  font-size: 13px;
+  color: var(--text3);
+  cursor: pointer;
+  transition: all var(--trans);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.all-btn:hover {
+  background: var(--surface);
+  border-color: var(--border2);
+}
+.all-btn:active {
+  transform: scale(0.96);
+}
+.all-btn.playing {
+  border-color: var(--accent);
+  color: var(--accent-txt);
+  background: var(--accent-bg);
+}
+
+/* ── Footer ── */
+footer {
+  padding: 0.9rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text2);
+  background: var(--surface);
+  transition:
+    background var(--trans),
+    border-color var(--trans);
+}
+
+/* ── Wave animation ── */
+.wave {
+  display: inline-flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 18px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.wave span {
+  display: inline-block;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: wave 0.7s ease-in-out infinite;
+}
+.wave span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.wave span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes wave {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 14px;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 420px) {
+  header h1 {
+    font-size: 15px;
+  }
+  .spk-btn {
+    padding: 1.4rem 1.5rem;
+    min-width: 110px;
+  }
+  .spk-icon {
+    font-size: 52px;
+  }
+  .spk-channel {
+    font-size: 38px;
+  }
+  .both-btn {
+    font-size: 14px;
+    padding: 0.75rem 1.5rem;
+  }
+  .divider {
+    height: 80px;
+  }
+  main {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+}
+@media (max-width: 340px) {
+  .divider {
+    display: none;
+  }
+  .speakers-row {
+    gap: 1rem;
+  }
+  .spk-btn {
+    min-width: 100px;
+  }
+}

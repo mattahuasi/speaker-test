@@ -1,0 +1,12 @@
+{
+  "name": "Speaker Test",
+  "short_name": "Spk Test",
+  "description": "Test your left and right stereo channels",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f11",
+  "theme_color": "#4f9ef8",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
