@@ -2,6 +2,12 @@
 
 Speaker Test es una aplicación web sencilla para probar el canal izquierdo, el derecho o ambos canales de audio de forma independiente. Está pensada para verificar bocinas, audífonos o sistemas de sonido desde el navegador, sin instalar nada.
 
+## Sitio en linea
+
+Puedes visitar la version publicada aquí:
+
+https://audio-speaker-test.vercel.app/
+
 ## Características
 
 - Prueba del canal izquierdo
