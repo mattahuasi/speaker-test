@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://audio-speaker-test.vercel.app/sitemap.xml
