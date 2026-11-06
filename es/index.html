@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Test de parlantes y auriculares online — Izquierda y derecha</title>
+        <meta name="description" content="Prueba tus parlantes, altavoces o auriculares online gratis. Comprueba los canales izquierdo y derecho con audio de voz, sin descargar ni instalar nada." />
+        <meta name="author" content="Speaker Test" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <link rel="canonical" href="https://audio-speaker-test.vercel.app/es/" />
+        <link rel="alternate" hreflang="en" href="https://audio-speaker-test.vercel.app/" />
+        <link rel="alternate" hreflang="es" href="https://audio-speaker-test.vercel.app/es/" />
+        <link rel="alternate" hreflang="x-default" href="https://audio-speaker-test.vercel.app/" />
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0f0f11" media="(prefers-color-scheme: dark)" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://audio-speaker-test.vercel.app/es/" />
+        <meta property="og:title" content="Test de parlantes y auriculares online — Izquierda y derecha" />
+        <meta property="og:description" content="Comprueba el sonido izquierdo y derecho de tus parlantes o auriculares. Prueba estéreo gratis, sin descargas ni registro." />
+        <meta property="og:image" content="https://audio-speaker-test.vercel.app/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Speaker Test con botones para probar los canales L y R" />
+        <meta property="og:locale" content="es_ES" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:site_name" content="Speaker Test" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://audio-speaker-test.vercel.app/es/" />
+        <meta name="twitter:title" content="Test de parlantes y auriculares online — Izquierda y derecha" />
+        <meta name="twitter:description" content="Prueba gratis los canales izquierdo y derecho de tus parlantes o auriculares, directamente en tu navegador." />
+        <meta name="twitter:image" content="https://audio-speaker-test.vercel.app/og-image.png" />
+        <meta name="twitter:image:alt" content="Speaker Test: prueba de sonido estéreo" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "Speaker Test",
+                "url": "https://audio-speaker-test.vercel.app/es/",
+                "description": "Prueba gratis los canales izquierdo, derecho y ambos de tus parlantes o auriculares con audio de voz en el navegador.",
+                "inLanguage": "es",
+                "isAccessibleForFree": true,
+                "featureList": ["Prueba del canal izquierdo", "Prueba del canal derecho", "Reproducción de ambos canales", "Prueba estéreo secuencial"],
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any",
+                "browserRequirements": "Requires Web Audio API",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            }
+        </script>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header-left">
+                <span style="font-size: 20px" aria-hidden="true">🔊</span>
+                <span class="site-name">Speaker Test</span>
+            </div>
+            <nav class="language-nav" aria-label="Idioma">
+                <a href="/" lang="en" hreflang="en">English</a>
+                <a href="/es/" lang="es" hreflang="es" aria-current="page">Español</a>
+            </nav>
+            <button class="theme-btn" id="theme-btn" aria-label="Cambiar tema" title="Cambiar tema claro u oscuro">🌙</button>
+        </header>
+        <main>
+            <div class="intro">
+                <h1>Test de parlantes y auriculares: izquierda y derecha</h1>
+                <p>Prueba el sonido estéreo de tus parlantes, altavoces o audífonos online y gratis. Elige un canal para escuchar una voz de ese lado, o comprueba ambos juntos. Sin descargas ni registro.</p>
+            </div>
+            <div class="speakers-row">
+                <button class="spk-btn" id="btn-left" onclick="playChannel('left')" aria-label="Probar parlante izquierdo">
+                    <span class="spk-badge">L</span>
+                    <span class="spk-icon">🔉</span>
+                    <span class="spk-channel">L</span>
+                    <span class="spk-label">Izquierda</span>
+                </button>
+                <div class="divider"></div>
+                <button class="spk-btn" id="btn-right" onclick="playChannel('right')" aria-label="Probar parlante derecho">
+                    <span class="spk-badge">R</span>
+                    <span class="spk-icon">🔊</span>
+                    <span class="spk-channel">R</span>
+                    <span class="spk-label">Derecha</span>
+                </button>
+            </div>
+            <button class="both-btn" id="btn-both" onclick="playChannel('both')">⚡ Ambos canales</button>
+            <div class="status-bar" id="status" role="status" aria-live="polite">Elige un canal para probar el sonido</div>
+            <button class="all-btn" id="btn-seq" onclick="toggleSeq()">▶ Prueba automática de canales</button>
+            <p class="test-note">Empieza con un volumen cómodo. Una voz femenina dice «Izquierda», «Derecha» o «Ambos». Cambia a English para escuchar el audio en inglés.</p>
+            <noscript><p>Activa JavaScript para reproducir la prueba de sonido. Puedes leer las instrucciones a continuación.</p></noscript>
+            <article class="help-content" aria-label="Guía de la prueba de sonido">
+                <section aria-labelledby="como-probar">
+                    <h2 id="como-probar">Cómo probar tus parlantes o auriculares</h2>
+                    <ol>
+                        <li>Conecta tus parlantes estéreo o auriculares y selecciónalos como salida de audio del dispositivo. Si usas auriculares, coloca el lado L en el oído izquierdo y el R en el derecho.</li>
+                        <li>Pulsa <strong>Izquierda</strong>: la voz debería escucharse solo en el parlante o auricular izquierdo. Pulsa <strong>Derecha</strong> y comprueba el lado contrario.</li>
+                        <li>Pulsa <strong>Ambos canales</strong> para escuchar los dos lados a la vez, o <strong>Prueba automática de canales</strong> para reproducir izquierda, derecha y ambos en secuencia.</li>
+                    </ol>
+                </section>
+                <section aria-labelledby="resultados">
+                    <h2 id="resultados">¿Cómo debería sonar la prueba estéreo?</h2>
+                    <p>Los botones de izquierda y derecha envían una grabación de voz al canal estéreo correspondiente mediante la Web Audio API. Con una salida estéreo, cada prueba individual debería escucharse únicamente del lado seleccionado. Al probar ambos canales, deberían sonar los dos lados y la voz debería percibirse cerca del centro si el volumen está equilibrado.</p>
+                    <p>Esta herramienta permite comprobar la reproducción y la separación de los canales al escuchar. No mide la respuesta en frecuencia, la calidad de sonido, la capacidad auditiva ni los canales de sonido envolvente. Por sí sola, no determina si una falla está en los auriculares, el cable, el software o el equipo de audio.</p>
+                </section>
+                <section aria-labelledby="soluciones">
+                    <h2 id="soluciones">Qué revisar si no hay sonido o solo funciona un lado</h2>
+                    <ul>
+                        <li><strong>No se escucha nada:</strong> revisa el volumen, si la pestaña del navegador está silenciada y qué dispositivo está seleccionado como salida. Vuelve a conectar los auriculares o el dispositivo Bluetooth y repite la prueba.</li>
+                        <li><strong>Un lado no suena:</strong> centra el balance izquierdo/derecho en los ajustes del sistema. Comprueba que el conector esté bien insertado y prueba otra fuente de audio para ayudar a localizar la falla.</li>
+                        <li><strong>Los canales están invertidos:</strong> revisa la orientación de los auriculares y la ubicación de los parlantes. En altavoces con cables separados, comprueba las conexiones izquierda y derecha.</li>
+                        <li><strong>Los dos lados suenan al probar un solo canal:</strong> desactiva el audio mono en los ajustes de accesibilidad o sonido. El audio espacial y otros efectos también pueden alterar la separación estéreo.</li>
+                    </ul>
+                </section>
+                <section aria-labelledby="preguntas">
+                    <h2 id="preguntas">Preguntas frecuentes</h2>
+                    <details>
+                        <summary>¿Sirve para probar audífonos o auriculares Bluetooth?</summary>
+                        <p>Sí. La misma prueba de izquierda y derecha sirve para auriculares estéreo con cable, audífonos y auriculares Bluetooth. Conéctalos primero y verifica que el dispositivo les esté enviando el audio.</p>
+                    </details>
+                    <details>
+                        <summary>¿Puedo hacer el test de sonido desde mi celular?</summary>
+                        <p>Funciona en navegadores modernos compatibles con la Web Audio API. Para distinguir claramente izquierda y derecha en un celular, usa auriculares estéreo o parlantes externos. La disposición de los altavoces integrados del teléfono puede no ofrecer una separación estéreo clara.</p>
+                    </details>
+                    <details>
+                        <summary>¿Necesito activar el micrófono o subir un archivo?</summary>
+                        <p>No. La herramienta reproduce grabaciones de voz incluidas en la aplicación desde tu navegador. No necesita acceso al micrófono ni te pide subir archivos de audio.</p>
+                    </details>
+                    <details>
+                        <summary>¿Permite comprobar un sistema de sonido 5.1 o 7.1?</summary>
+                        <p>Esta prueba comprueba únicamente los canales estéreo izquierdo y derecho. No reproduce por separado los canales central, subwoofer o traseros. Para esos canales, utiliza la prueba de sonido envolvente de tu receptor o sistema operativo.</p>
+                    </details>
+                </section>
+            </article>
+        </main>
+        <footer>Speaker Test &mdash; Prueba estéreo con voz por canal</footer>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

@@ -73,7 +73,7 @@ header {
     align-items: center;
     gap: 0.6rem;
 }
-header h1 {
+.site-name {
     font-size: 17px;
     font-weight: 600;
     white-space: nowrap;
@@ -119,6 +119,85 @@ main {
 }
 
 /* ── Speaker row ── */
+.language-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-left: auto;
+    font-size: 14px;
+}
+.language-nav a {
+    color: var(--accent-txt);
+    padding: 0.4rem 0;
+}
+.language-nav a[aria-current="page"] {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+}
+.intro {
+    max-width: 680px;
+    text-align: center;
+}
+.intro h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+}
+.intro p,
+.test-note {
+    color: var(--text3);
+    line-height: 1.6;
+}
+.test-note {
+    max-width: 600px;
+    font-size: 13px;
+    text-align: center;
+}
+.help-content {
+    width: 100%;
+    max-width: 760px;
+    line-height: 1.7;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+.help-content section + section {
+    margin-top: 2rem;
+}
+.help-content h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+.help-content p,
+.help-content li {
+    color: var(--text3);
+    margin-bottom: 0.75rem;
+}
+.help-content ol,
+.help-content ul {
+    padding-left: 1.5rem;
+}
+.help-content details {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+.help-content summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+.help-content details p {
+    margin: 0.75rem 0 0;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
 .speakers-row {
     display: flex;
     gap: 2rem;
@@ -321,8 +400,17 @@ footer {
 
 /* ── Responsive ── */
 @media (max-width: 420px) {
-    header h1 {
+    .site-name {
         font-size: 15px;
+    }
+    header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    .language-nav {
+        font-size: 13px;
+        gap: 0.5rem;
     }
     .spk-btn {
         padding: 1.4rem 1.5rem;
