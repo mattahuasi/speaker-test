@@ -8,7 +8,11 @@ You can visit the published version here:
 
 https://audio-speaker-test.vercel.app/
 
-Spanish version: https://audio-speaker-test.vercel.app/es/
+The root URL detects the browser language and redirects to the matching version.
+
+English version: https://audio-speaker-test.vercel.app/en
+
+Spanish version: https://audio-speaker-test.vercel.app/es
 
 ## Features
 
@@ -26,6 +30,10 @@ Spanish version: https://audio-speaker-test.vercel.app/es/
 ```text
 speaker-test/
 ├── index.html
+├── en/
+│   └── index.html
+├── es/
+│   └── index.html
 ├── favicon.ico
 ├── icon.svg
 ├── apple-touch-icon.png
@@ -33,13 +41,16 @@ speaker-test/
 ├── site.webmanifest
 ├── css/
 │   └── style.css
-└── js/
-    └── app.js
+├── js/
+│   └── app.js
+└── scripts/
+    ├── generate-voices.py
+    └── serve.py
 ```
 
 ## Usage
 
-1. Serve the project directory with a static HTTP server (for example, `python -m http.server 8000`) and open `http://localhost:8000/`. Shared assets use root-relative URLs, so opening the HTML as a local file is not supported.
+1. Run `python scripts/serve.py` (or `python scripts/serve.py 3000`) and open `http://localhost:8000/`. This local server keeps clean URLs such as `/en` and `/es`; plain `python -m http.server` redirects directories to `/en/` and `/es/`. Shared assets use root-relative URLs, so opening the HTML as a local file is not supported. If you previously used `python -m http.server`, clear the cached 301 redirect or use a different port before testing again.
 2. Click **Left**, **Right**, or **Both channels** to play the audio.
 3. Use **Auto-test all channels** to listen to the channels sequentially.
 4. Switch between light and dark themes with the top button.
@@ -73,9 +84,10 @@ The generator uses `en-US-AriaNeural` and `es-MX-DaliaNeural` at a slightly slow
 
 ## SEO and publishing
 
-- `/` is the English page and `/es/` is the Spanish page. Both contain crawlable HTML, a self-referencing canonical, reciprocal language alternates and localized application metadata.
+- `/` redirects to `/en` or `/es` based on the browser's `Accept-Language` header. The static `index.html` provides the same redirect for local servers.
+- `/en` is the English page and `/es` is the Spanish page. Both contain crawlable HTML, a self-referencing canonical, reciprocal language alternates and localized application metadata.
 - `sitemap.xml` lists both pages. `robots.txt` points to the sitemap.
-- `vercel.json` enables clean URLs and trailing slashes so the Spanish page uses `/es/`.
-- After deploying, submit `https://audio-speaker-test.vercel.app/sitemap.xml` in the existing Search Console property. Inspect `/` and `/es/`, run the live URL test and request indexing for each page.
+- `vercel.json` enables clean URLs without trailing slashes, so the pages use `/en` and `/es`.
+- After deploying, submit `https://audio-speaker-test.vercel.app/sitemap.xml` in the existing Search Console property. Inspect `/en` and `/es`, run the live URL test and request indexing for each page.
 - Search Console registration does not guarantee indexing or ranking. Review the indexing status and search performance after Google recrawls the pages.
 - If the production domain changes, update the absolute URLs in both HTML pages, `sitemap.xml`, `robots.txt` and this README, and permanently redirect the old domain to the new one.

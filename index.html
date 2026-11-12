@@ -1,232 +1,27 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- ── Primary Meta ── -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Online Speaker Test — Left &amp; Right Stereo Audio</title>
-        <meta
-            name="description"
-            content="Test your left and right speakers or headphones online. Check stereo channels with voice audio, troubleshoot sound problems, and start instantly with no download."
-        />
-        <meta name="author" content="Speaker Test" />
-        <meta name="robots" content="index, follow, max-image-preview:large" />
-        <link rel="alternate" hreflang="en" href="https://audio-speaker-test.vercel.app/" />
-        <link rel="alternate" hreflang="es" href="https://audio-speaker-test.vercel.app/es/" />
-        <link rel="alternate" hreflang="x-default" href="https://audio-speaker-test.vercel.app/" />
-        <link rel="canonical" href="https://audio-speaker-test.vercel.app/" />
-        <meta
-            name="theme-color"
-            content="#ffffff"
-            media="(prefers-color-scheme: light)"
-        />
-        <meta
-            name="theme-color"
-            content="#0f0f11"
-            media="(prefers-color-scheme: dark)"
-        />
-
-        <!-- ── Open Graph (Facebook, WhatsApp, LinkedIn) ── -->
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content="https://audio-speaker-test.vercel.app/"
-        />
-        <meta
-            property="og:title"
-            content="Online Speaker Test — Left &amp; Right Stereo Audio"
-        />
-        <meta
-            property="og:description"
-            content="Test your left and right speakers independently. Free, instant, no download needed. Works on any browser."
-        />
-        <meta
-            property="og:image"
-            content="https://audio-speaker-test.vercel.app/og-image.png"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta
-            property="og:image:alt"
-            content="Speaker Test app showing L and R channel buttons"
-        />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:locale:alternate" content="es_ES" />
-        <meta property="og:site_name" content="Speaker Test" />
-
-        <!-- ── Twitter / X Card ── -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:url"
-            content="https://audio-speaker-test.vercel.app/"
-        />
-        <meta
-            name="twitter:title"
-            content="Online Speaker Test — Left &amp; Right Stereo Audio"
-        />
-        <meta
-            name="twitter:description"
-            content="Test your left and right speakers independently. Free, instant, no download needed."
-        />
-        <meta
-            name="twitter:image"
-            content="https://audio-speaker-test.vercel.app/og-image.png"
-        />
-        <meta name="twitter:image:alt" content="Speaker Test app" />
-
+        <meta name="robots" content="noindex" />
         <meta
             name="google-site-verification"
             content="xRqT5pQQETq9o1kaS6i_sFaF7CkRpYhiDLhVEV0IBiU"
         />
-
-        <!-- ── Schema.org JSON-LD (Google Rich Results) ── -->
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebApplication",
-                "name": "Speaker Test",
-                "url": "https://audio-speaker-test.vercel.app/",
-                "description": "Test left, right and both stereo channels with voice audio in your browser, without a download.",
-                "inLanguage": "en",
-                "isAccessibleForFree": true,
-                "featureList": ["Left speaker test", "Right speaker test", "Both channels playback", "Sequential stereo test"],
-                "applicationCategory": "UtilitiesApplication",
-                "operatingSystem": "Any",
-                "browserRequirements": "Requires Web Audio API",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "USD"
-                }
-            }
+        <title>Speaker Test</title>
+        <script>
+            (function () {
+                var languages = navigator.languages && navigator.languages.length
+                    ? navigator.languages
+                    : [navigator.language || ""];
+                var preferred = String(languages[0] || "").toLowerCase();
+                var language = preferred.indexOf("es") === 0 ? "es" : "en";
+                window.location.replace(
+                    "/" + language + window.location.search + window.location.hash
+                );
+            })();
         </script>
-
-        <!-- ── Favicon mínimo ── -->
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-
-        <link rel="stylesheet" href="/css/style.css" />
+        <noscript><meta http-equiv="refresh" content="0; url=/en" /></noscript>
     </head>
-    <body>
-        <header>
-            <div class="header-left">
-                <span style="font-size: 20px">🔊</span>
-                <span class="site-name">Speaker Test</span>
-            </div>
-            <nav class="language-nav" aria-label="Language">
-                <a href="/" lang="en" hreflang="en" aria-current="page">English</a>
-                <a href="/es/" lang="es" hreflang="es">Español</a>
-            </nav>
-            <button
-                class="theme-btn"
-                id="theme-btn"
-                aria-label="Toggle theme"
-                title="Toggle dark/light mode"
-            >
-                🌙
-            </button>
-        </header>
-
-        <main>
-            <div class="intro">
-                <h1>Online speaker test: left &amp; right stereo channels</h1>
-                <p>Check your speakers or headphones with a free stereo sound test. Choose a channel to hear a voice on that side, or test both together. No download or account needed.</p>
-            </div>
-            <div class="speakers-row">
-                <button
-                    class="spk-btn"
-                    id="btn-left"
-                    onclick="playChannel('left')"
-                    aria-label="Test left speaker"
-                >
-                    <span class="spk-badge">L</span>
-                    <span class="spk-icon">🔉</span>
-                    <span class="spk-channel">L</span>
-                    <span class="spk-label">Left</span>
-                </button>
-                <div class="divider"></div>
-                <button
-                    class="spk-btn"
-                    id="btn-right"
-                    onclick="playChannel('right')"
-                    aria-label="Test right speaker"
-                >
-                    <span class="spk-badge">R</span>
-                    <span class="spk-icon">🔊</span>
-                    <span class="spk-channel">R</span>
-                    <span class="spk-label">Right</span>
-                </button>
-            </div>
-
-            <button
-                class="both-btn"
-                id="btn-both"
-                onclick="playChannel('both')"
-            >
-                ⚡ Both channels
-            </button>
-
-            <div class="status-bar" id="status" role="status" aria-live="polite">
-                Choose a channel to test your speakers
-            </div>
-
-            <button class="all-btn" id="btn-seq" onclick="toggleSeq()">
-                ▶ Auto-test all channels
-            </button>
-            <p class="test-note">Start at a comfortable volume. A female voice says “Left”, “Right” or “Both”. Switch to Español for Spanish audio.</p>
-            <noscript><p>Enable JavaScript to play the speaker test. You can still read the instructions below.</p></noscript>
-
-            <article class="help-content" aria-label="Speaker test guide">
-                <section aria-labelledby="how-to">
-                    <h2 id="how-to">How to test your speakers or headphones</h2>
-                    <ol>
-                        <li>Connect your stereo speakers or headphones and select them as your device's audio output. If you use headphones, put the L earpiece on your left ear and R on your right.</li>
-                        <li>Press <strong>Left</strong>. You should hear the voice from only the left speaker or earpiece. Press <strong>Right</strong> and check the opposite side.</li>
-                        <li>Press <strong>Both channels</strong> to hear both sides together, or <strong>Auto-test all channels</strong> to run left, right and both in sequence.</li>
-                    </ol>
-                </section>
-                <section aria-labelledby="results">
-                    <h2 id="results">What should the stereo test sound like?</h2>
-                    <p>The left and right buttons send voice audio to their respective stereo channels using the Web Audio API. With a stereo output, each individual test should be audible on just the selected side. Both channels should play through both sides, with the voice appearing near the center when their volume is balanced.</p>
-                    <p>This is a listening check for channel routing and basic playback. It does not measure frequency response, sound quality, hearing ability or surround-sound channels. It cannot tell by itself whether a problem is in your headphones, cable, software or audio hardware.</p>
-                </section>
-                <section aria-labelledby="troubleshooting">
-                    <h2 id="troubleshooting">Troubleshooting: no sound or only one speaker works</h2>
-                    <ul>
-                        <li><strong>No sound:</strong> check device volume, the browser tab's mute setting and the selected output device. Reconnect your headphones or Bluetooth device, then try the test again.</li>
-                        <li><strong>One side is silent:</strong> center the left/right balance in your system settings. Check that the cable is fully inserted and try another audio source to help isolate the cause.</li>
-                        <li><strong>Left plays on the right:</strong> check headphone orientation and speaker placement. For separate wired speakers, check the left and right connections.</li>
-                        <li><strong>Both sides play during a single-channel test:</strong> turn off mono audio in your device's accessibility or audio settings. Spatial audio and other sound effects may also change channel separation.</li>
-                    </ul>
-                </section>
-                <section aria-labelledby="questions">
-                    <h2 id="questions">Frequently asked questions</h2>
-                    <details>
-                        <summary>Can I use this as a headphone or earbud test?</summary>
-                        <p>Yes. The same left and right channel test works with stereo headphones, wired earbuds and Bluetooth earbuds. Connect them first and make sure your device is sending audio to them.</p>
-                    </details>
-                    <details>
-                        <summary>Does the speaker test work on a phone?</summary>
-                        <p>It works in modern browsers that support the Web Audio API. For a clear left/right check on a phone, use stereo headphones or external speakers. A phone's built-in speaker arrangement may not provide clear stereo separation.</p>
-                    </details>
-                    <details>
-                        <summary>Do I need a microphone or an audio upload?</summary>
-                        <p>No. This tool plays built-in voice recordings through your browser. It does not need microphone access or ask you to upload an audio file.</p>
-                    </details>
-                    <details>
-                        <summary>Can this check a 5.1 or 7.1 surround system?</summary>
-                        <p>This tool tests only stereo left and right channels. It does not test center, subwoofer or rear channels individually. Use your receiver's or operating system's surround test for those channels.</p>
-                    </details>
-                </section>
-            </article>
-        </main>
-
-        <footer>
-            Stereo Speaker Test &mdash; Female voice, isolated stereo channels
-        </footer>
-
-        <script src="/js/app.js"></script>
-    </body>
+    <body></body>
 </html>
